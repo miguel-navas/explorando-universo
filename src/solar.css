@@ -1,0 +1,524 @@
+.solar-system {
+  background: linear-gradient(180deg, #030b1a38, #030b1a70 55%, #030b1aee),
+    url('/assets/destinations/solar.jpg') center top / cover no-repeat;
+}
+
+.solar-content {
+  padding-block: clamp(20px, 3vw, 44px) 22px;
+}
+
+.solar-heading {
+  border-left: 4px solid #ff981d;
+  padding-left: 15px;
+  margin-bottom: 22px;
+  text-shadow: 0 2px 10px #000;
+}
+
+.solar-heading h1 {
+  margin: 0;
+  font-size: clamp(32px, 4.5vw, 62px);
+  line-height: 1.05;
+}
+
+.solar-heading p {
+  margin: 6px 0 0;
+  font-size: clamp(14px, 1.5vw, 21px);
+}
+
+.solar-panel {
+  border: 1px solid #577ca4;
+  border-radius: 18px;
+  background: #04101ce8;
+  min-width: 0;
+}
+
+.solar-picker {
+  display: grid;
+  grid-template-columns: repeat(9, minmax(0, 1fr));
+  gap: 6px;
+  padding: 8px;
+  margin-bottom: 16px;
+}
+
+.solar-picker button {
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: 3px;
+  min-width: 0;
+  padding: 5px 3px;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  background: transparent;
+  color: #f8fbff;
+  font-size: clamp(12px, 1.25vw, 17px);
+  font-weight: 700;
+}
+
+.solar-picker button:hover,
+.solar-picker button[aria-pressed="true"] {
+  color: #ffae43;
+  border-color: #ff981d;
+  background: #ff8d0010;
+}
+
+.solar-picker button[aria-pressed="true"] {
+  box-shadow: inset 0 0 12px #ff8d002b, 0 0 12px #ff8d003b;
+}
+
+.solar-picker img,
+.solar-portrait img,
+.solar-moons img {
+  object-fit: contain;
+  mix-blend-mode: screen;
+}
+
+.solar-picker img {
+  width: min(100%, 80px);
+  height: 58px;
+}
+
+.solar-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.03fr);
+  gap: 16px;
+}
+
+.solar-profile,
+.solar-travel {
+  padding: clamp(14px, 2vw, 25px);
+}
+
+.solar-profile {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: radial-gradient(ellipse at 55% 38%, #0c346bb8, transparent 57%), #04101ce8;
+}
+
+.solar-profile-heading {
+  position: relative;
+  z-index: 1;
+}
+
+.solar-profile h2 {
+  margin: 0 0 7px;
+  font-size: clamp(32px, 4vw, 54px);
+  line-height: 1;
+}
+
+.solar-profile-heading span {
+  display: inline-block;
+  border: 1px solid #ff981d;
+  border-radius: 20px;
+  padding: 4px 10px;
+  font-size: 13px;
+}
+
+.solar-portrait {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  flex: 1;
+}
+
+.solar-portrait img:first-child {
+  width: 100%;
+  height: clamp(205px, 23vw, 330px);
+}
+
+.solar-portrait:has(.solar-orbit-moon)::before {
+  content: '';
+  position: absolute;
+  width: 82%;
+  height: 42%;
+  border: 1px dashed #a4bcd18c;
+  border-radius: 50%;
+  transform: rotate(-13deg);
+}
+
+.solar-portrait .solar-orbit-moon {
+  position: absolute;
+  right: 4%;
+  top: 33%;
+  width: clamp(34px, 7vw, 65px);
+  height: auto;
+}
+
+.solar-moons {
+  border: 1px solid #375675;
+  border-radius: 12px;
+  padding: 10px 12px;
+  background: #030b1ad9;
+}
+
+.solar-moons h3,
+.solar-travel h2 {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin: 0;
+}
+
+.solar-moons h3 {
+  margin-bottom: 8px;
+}
+
+.solar-moons svg,
+.solar-facts svg,
+.solar-travel h2 svg {
+  color: #ff9b25;
+  flex-shrink: 0;
+}
+
+.solar-moons p {
+  margin: 6px 0;
+  color: #c4d4e9;
+}
+
+.solar-moons ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 130px), 1fr));
+  gap: 6px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.solar-moons button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 6px;
+  text-align: left;
+  background: #0b2138;
+  color: #f8fbff;
+  border: 1px solid #294763;
+  border-radius: 8px;
+}
+
+.solar-moons button:hover {
+  border-color: #ff981d;
+}
+
+.solar-moons small,
+.solar-results small {
+  display: block;
+  color: #b8cde5;
+  margin-top: 4px;
+  font-weight: 400;
+}
+
+.solar-details {
+  display: grid;
+  gap: 16px;
+  align-content: start;
+  min-width: 0;
+}
+
+.solar-facts {
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.solar-facts > div {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-content: center;
+  gap: 4px 10px;
+  padding: clamp(10px, 1.75vw, 24px);
+}
+
+.solar-facts > div:nth-child(even) {
+  border-left: 1px solid #345471;
+}
+
+.solar-facts > div:nth-child(n+3) {
+  border-top: 1px solid #345471;
+}
+
+.solar-facts svg {
+  grid-row: span 2;
+  align-self: center;
+}
+
+.solar-facts dt,
+.solar-results dt {
+  color: #c4d4e9;
+  font-size: 13px;
+}
+
+.solar-facts dd,
+.solar-results dd {
+  margin: 0;
+  font-size: clamp(15px, 1.6vw, 22px);
+  font-weight: 750;
+  overflow-wrap: anywhere;
+}
+
+.solar-travel h2 {
+  font-size: clamp(20px, 2vw, 28px);
+  margin-bottom: 14px;
+}
+
+.solar-travel-selects {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.solar-travel-selects label {
+  display: grid;
+  gap: 5px;
+  font-size: 13px;
+  color: #c4d4e9;
+}
+
+.solar-travel select {
+  width: 100%;
+  padding: 8px;
+  min-height: 42px;
+  font: inherit;
+  color: #fff;
+  background: #07192d;
+  border: 1px solid #577ca4;
+  border-radius: 8px;
+}
+
+.solar-results {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  border-top: 1px solid #345471;
+  padding-top: 13px;
+  margin: 16px 0 10px;
+}
+
+.solar-results dd {
+  margin-top: 6px;
+  font-size: clamp(14px, 1.5vw, 20px);
+}
+
+.solar-results small {
+  font-size: 12px;
+}
+
+.solar-note,
+.solar-sources {
+  color: #c4d4e9;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.solar-note p {
+  margin: 6px 0 0;
+}
+
+.solar-sources {
+  margin: 10px 0 0;
+}
+
+.solar-sources summary,
+.solar-note summary {
+  width: fit-content;
+  cursor: pointer;
+}
+
+.solar-sources > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  margin-top: 8px;
+}
+
+.solar-sources a {
+  color: inherit;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 850px) {
+  .solar-system {
+    background-color: #030b1a;
+    background-image: linear-gradient(180deg, #030b1a38, #030b1a70 55%, #030b1a), url('/assets/destinations/solar.jpg');
+    background-position: left top;
+    background-size: 100% 620px, auto 620px;
+  }
+
+  .solar-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .solar-picker {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 420px) {
+  .solar-facts svg {
+    display: none;
+  }
+
+  .solar-facts > div {
+    grid-template-columns: 1fr;
+  }
+
+  .solar-results {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 1051px) and (max-height: 1000px) {
+  .solar-content {
+    padding-block: 14px 10px;
+  }
+
+  .solar-heading {
+    margin-bottom: 12px;
+  }
+
+  .solar-heading h1 {
+    font-size: clamp(32px, 5.8svh, 54px);
+  }
+
+  .solar-heading p {
+    font-size: 15px;
+  }
+
+  .solar-picker {
+    padding: 5px;
+    margin-bottom: 12px;
+  }
+
+  .solar-picker img {
+    height: clamp(32px, 5.5svh, 52px);
+  }
+
+  .solar-grid,
+  .solar-details {
+    gap: 12px;
+  }
+
+  .solar-profile,
+  .solar-travel {
+    padding: 12px;
+  }
+
+  .solar-profile h2 {
+    font-size: clamp(30px, 4.8svh, 46px);
+  }
+
+  .solar-portrait img:first-child {
+    height: clamp(130px, 25svh, 240px);
+  }
+
+  .solar-facts > div {
+    padding: 10px 12px;
+  }
+
+  .solar-facts dd,
+  .solar-results dd {
+    font-size: clamp(14px, 2.1svh, 20px);
+  }
+
+  .solar-travel h2 {
+    margin-bottom: 8px;
+  }
+
+  .solar-travel select {
+    min-height: 34px;
+    padding: 5px;
+  }
+
+  .solar-results {
+    margin: 10px 0 6px;
+    padding-top: 8px;
+  }
+
+  .app:has(.solar-system) > footer {
+    min-height: 42px;
+    padding-block: 10px;
+  }
+}
+
+@media (min-width: 1051px) and (max-height: 800px) {
+  .app:has(.solar-system) > .header {
+    height: 68px;
+  }
+
+  .app:has(.solar-system) > .search-panel {
+    top: 66px;
+  }
+
+  .solar-heading {
+    margin-bottom: 8px;
+  }
+
+  .solar-heading h1 {
+    font-size: clamp(32px, 5.2svh, 42px);
+  }
+
+  .solar-picker {
+    margin-bottom: 8px;
+  }
+
+  .solar-picker img {
+    height: 36px;
+  }
+
+  .solar-profile,
+  .solar-travel {
+    padding: 10px;
+  }
+
+  .solar-portrait img:first-child {
+    height: clamp(124px, 23svh, 180px);
+  }
+
+  .solar-moons {
+    padding: 7px 9px;
+  }
+
+  .solar-moons ul {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 106px), 1fr));
+  }
+
+  .solar-moons button {
+    min-height: 42px;
+    font-size: 13px;
+  }
+
+  .solar-moons button svg {
+    display: none;
+  }
+
+  .solar-moons button img {
+    width: 33px;
+    height: 33px;
+  }
+}
+
+@media (min-width: 1051px) and (max-height: 700px) {
+  .solar-content {
+    padding-block: 8px 6px;
+  }
+
+  .solar-portrait img:first-child {
+    height: clamp(118px, 21svh, 145px);
+  }
+
+  .solar-grid,
+  .solar-details {
+    gap: 8px;
+  }
+}
+
+.solar-picker .solar-sun-image,
+.solar-portrait img.solar-sun-image:first-child {
+  width: auto;
+  max-width: 100%;
+  aspect-ratio: 1;
+  mask-image: radial-gradient(circle closest-side, #000 79%, transparent 95%);
+}
