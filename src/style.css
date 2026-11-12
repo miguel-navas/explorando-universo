@@ -646,6 +646,28 @@
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
 }
 
+.mission-gallery img {
+  object-fit: contain;
+  background: #030b1a;
+}
+
+.mission-gallery small {
+  display: block;
+  color: #cad6e6;
+  font-size: 12px;
+}
+
+@media (max-height: 520px) {
+  .cosmos-subnav {
+    gap: 3px;
+  }
+
+  .cosmos-subnav button {
+    width: 34px;
+    height: 34px;
+  }
+}
+
 @media (min-width: 1051px) and (max-width: 1400px) {
   .header {
     gap: 16px;
