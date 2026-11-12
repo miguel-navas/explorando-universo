@@ -1,5 +1,6 @@
-import {Bot, CircleDot, Compass, Download, FlaskConical, Globe, History, Layers, Orbit, Plane, PlayCircle, Rocket, Ruler, Scan, Search, Sparkles, Star, Telescope, Users, Waypoints} from 'lucide-react';
+import {Bot, CircleDot, Compass, Download, FlaskConical, Globe, HeartPulse, History, Layers, Orbit, Plane, PlayCircle, Rocket, Ruler, Scan, Search, Sparkles, Star, Telescope, Users, Waypoints} from 'lucide-react';
 import NasaMedia, {type NasaMediaTopic} from './NasaMedia';
+import {humansInSpace} from './humansInSpace';
 
 const sectionIcons = {
   'visao-geral': Compass,
@@ -26,6 +27,12 @@ const sectionIcons = {
   catalogo: Globe,
   clima: Sparkles,
   'outros-metodos': Scan,
+  'vida-em-orbita': Globe,
+  saude: HeartPulse,
+  treinamento: Users,
+  trajes: Scan,
+  destinos: Waypoints,
+  transporte: Rocket,
 };
 
 type CosmosFigure = {file: string; alt: string; caption: string; credit: string};
@@ -38,7 +45,7 @@ type CosmosSection = {
   gallery?: (CosmosFigure & {title: string; subtitle: string})[];
 };
 
-type CosmosTopic = {
+export type CosmosTopic = {
   id: string;
   name: string;
   subtitle: string;
@@ -46,10 +53,12 @@ type CosmosTopic = {
   figures: (CosmosFigure & {section: string})[];
   attribution?: string;
   video?: NasaMediaTopic;
+  downloads?: boolean;
   sections: CosmosSection[];
 };
 
 export const cosmosTopics: CosmosTopic[] = [
+  humansInSpace,
   {
     id: 'missoes-espaciais',
     name: 'Missões espaciais',
@@ -515,7 +524,7 @@ export default function CosmosGuide({topic}: {topic: CosmosTopic}) {
                         <span>{item.subtitle}</span>
                         <p>{item.caption}</p>
                         <small>Imagem · {item.credit}</small>
-                        {topic.video && (
+                        {(topic.video || topic.downloads) && (
                           <a className="nasa-image-download" href={import.meta.env.BASE_URL + 'assets/' + item.file} download>
                             <Download size={15} aria-hidden="true"/>Baixar imagem
                           </a>
@@ -531,7 +540,7 @@ export default function CosmosGuide({topic}: {topic: CosmosTopic}) {
                   <figcaption>
                     {figure.caption}
                     <span>Crédito da imagem · {figure.credit}</span>
-                    {topic.video && (
+                    {(topic.video || topic.downloads) && (
                       <a className="nasa-image-download" href={import.meta.env.BASE_URL + 'assets/' + figure.file} download>
                         <Download size={15} aria-hidden="true"/>Baixar imagem
                       </a>
