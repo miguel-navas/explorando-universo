@@ -20,6 +20,12 @@ const sectionIcons = {
   crescimento: Sparkles,
   'sistemas-planetarios': Orbit,
   medidas: Ruler,
+  classificacao: Layers,
+  'ciclo-de-vida': History,
+  'luz-estelar': Telescope,
+  catalogo: Globe,
+  clima: Sparkles,
+  'outros-metodos': Scan,
 };
 
 type CosmosFigure = {file: string; alt: string; caption: string; credit: string};
@@ -250,6 +256,7 @@ export const cosmosTopics: CosmosTopic[] = [
     subtitle: 'Ciclo de vida, tipos e sistemas múltiplos',
     icon: Star,
     video: 'estrelas',
+    attribution: 'Conteúdo adaptado de NASA Science, NASA Jet Propulsion Laboratory e ESA/Gaia. As imagens identificam os objetos observados e seus créditos.',
     figures: [{
       section: 'visao-geral',
       file: 'cosmos/estrelas.png',
@@ -268,6 +275,12 @@ export const cosmosTopics: CosmosTopic[] = [
       alt: 'Sirius A aparece como uma estrela muito brilhante, com Sirius B como um ponto mais fraco próximo.',
       caption: 'Imagem do Hubble do sistema Sirius. A pequena companheira Sirius B é uma anã branca.',
       credit: 'NASA, H. E. Bond, E. Nelan, M. Barstow, M. Burleigh e J. B. Holberg',
+    }, {
+      section: 'sistemas-planetarios',
+      file: 'cosmos/beta-pictoris-webb.png',
+      alt: 'Imagem infravermelha do disco de detritos ao redor de Beta Pictoris, com uma estrutura curva de poeira.',
+      caption: 'O instrumento MIRI do Webb registrou o disco de detritos de Beta Pictoris. A luz da estrela foi bloqueada por um coronógrafo para revelar a poeira mais fraca ao redor.',
+      credit: 'NASA, ESA, CSA, STScI, Christopher Stark, Kellen Lawson, Jens Kammerer e Marshall Perrin',
     }],
     sections: [
       {
@@ -302,6 +315,40 @@ export const cosmosTopics: CosmosTopic[] = [
           {title: 'De poeira a planetesimais', text: 'Grãos de rocha e gelo colidem e podem se agregar em corpos maiores, chamados planetesimais. Novas colisões e a gravidade permitem o crescimento de embriões planetários.'},
           {title: 'O disco deixa pistas', text: 'O material do disco emite radiação infravermelha. Telescópios podem detectar esse excesso de luz ou registrar a estrutura do disco para estudar sua evolução.'},
           {title: 'Uma história que também está nas rochas', text: 'Meteoritos e amostras trazidas por missões espaciais guardam pistas químicas e físicas sobre o início do Sistema Solar, há cerca de 4,6 bilhões de anos.'},
+        ],
+      },
+      {
+        id: 'classificacao', title: 'Cores, temperaturas e classificação',
+        text: 'A sequência espectral O, B, A, F, G, K e M organiza as estrelas das mais quentes para as mais frias. Os espectros, que separam a luz em comprimentos de onda, permitem reconhecer essas classes.',
+        details: [
+          {title: 'O e B · azul e branco-azulado', text: 'Na sequência principal, essas estrelas são muito quentes e massivas. Consomem combustível rapidamente e têm vidas mais curtas que estrelas semelhantes ao Sol.'},
+          {title: 'A e F · branco e branco-amarelado', text: 'Têm temperaturas superficiais intermediárias entre as classes mais quentes e a classe solar. Sirius A é um exemplo de estrela de classe A.'},
+          {title: 'G · a classe do Sol', text: 'O Sol é uma estrela da sequência principal de tipo G. Seu espectro permite estudar os elementos presentes em sua atmosfera e sua temperatura.'},
+          {title: 'K e M · laranja e vermelho', text: 'Na sequência principal, são estrelas menores e mais frias que o Sol. Seu consumo mais lento de combustível favorece vidas longas.'},
+        ],
+      },
+      {
+        id: 'ciclo-de-vida', title: 'Caminhos de evolução e remanescentes',
+        text: 'A massa inicial e a interação com companheiras influenciam a evolução. Estrelas de maior massa consomem seu combustível mais depressa, mesmo tendo mais material disponível.',
+        details: [
+          {title: 'Estrelas como o Sol', text: 'Após consumir o hidrogênio no núcleo, a estrela se expande. Mais tarde pode perder suas camadas externas, deixando um núcleo compacto e quente, a anã branca, que esfria ao longo do tempo.'},
+          {title: 'Estrelas massivas', text: 'Produzem elementos progressivamente mais pesados em seu interior. Em alguns casos, o colapso do núcleo desencadeia uma supernova e deixa uma estrela de nêutrons ou um buraco negro.'},
+          {title: 'Pulsares', text: 'São estrelas de nêutrons em rotação rápida. Seus feixes de radiação podem cruzar nossa linha de visão e produzir pulsos regulares, como um farol.'},
+        ],
+        gallery: [
+          {title: 'Sol', subtitle: 'Estrela da sequência principal', file: 'solar/sun.jpg', alt: 'Disco do Sol com estruturas brilhantes em sua atmosfera.', caption: 'A fusão de hidrogênio no núcleo fornece a energia do Sol. A imagem mostra estruturas de sua atmosfera.', credit: 'NASA/SDO'},
+          {title: 'Sirius B', subtitle: 'Anã branca em um sistema binário', file: 'cosmos/sirius.jpg', alt: 'Sirius A muito brilhante e a companheira Sirius B mais fraca.', caption: 'O ponto mais fraco junto de Sirius A é o remanescente compacto Sirius B. Imagem do Hubble.', credit: 'NASA, H. E. Bond, E. Nelan, M. Barstow, M. Burleigh e J. B. Holberg'},
+          {title: 'Nebulosa do Caranguejo', subtitle: 'Remanescente de supernova com pulsar', file: 'nebulae/caranguejo.png', alt: 'Filamentos de gás da Nebulosa do Caranguejo observados pelo Webb.', caption: 'O material expelido na explosão forma a nebulosa. Seu pulsar central fornece energia ao ambiente ao redor.', credit: 'NASA, ESA, CSA, STScI, Tea Temim e Joseph DePasquale'},
+        ],
+      },
+      {
+        id: 'luz-estelar', title: 'Como estudamos uma estrela pela luz?',
+        text: 'Mesmo sem viajar até uma estrela, astrônomos conseguem investigar sua composição, temperatura, movimento e distância.',
+        details: [
+          {title: 'Espectroscopia', text: 'Linhas de absorção e emissão identificam elementos químicos. Seus deslocamentos também revelam movimentos na direção do observador ou no sentido oposto.'},
+          {title: 'Paralaxe e distância', text: 'Ao observar de posições diferentes ao longo da órbita terrestre, uma estrela próxima parece mudar de posição em relação ao fundo distante. Essa pequena mudança angular ajuda a calcular sua distância.'},
+          {title: 'Brilho e luminosidade', text: 'O brilho aparente depende da energia emitida e da distância. Com a distância estimada, os astrônomos podem investigar a luminosidade intrínseca e comparar estrelas.'},
+          {title: 'Variações ao longo do tempo', text: 'Pulsação, manchas, rotação e eclipses alteram o brilho. A repetição dessas mudanças ajuda a caracterizar a estrela e suas possíveis companheiras.'},
         ],
       },
     ],
@@ -374,6 +421,34 @@ export const cosmosTopics: CosmosTopic[] = [
           {title: 'Atmosfera e incertezas', text: 'Os espectros revelam padrões de absorção associados a gases. Nuvens, neblinas e diferentes composições podem produzir sinais parecidos, por isso os dados são comparados com modelos e novas observações.'},
         ],
       },
+      {
+        id: 'catalogo', title: 'Um catálogo de mundos diferentes',
+        text: 'Estes exemplos mostram a diversidade de tamanhos, órbitas e ambientes. As ilustrações artísticas representam cenários baseados em observações e modelos.',
+        gallery: [
+          {title: '55 Cancri e', subtitle: 'Super-Terra · órbita de cerca de 0,7 dia', file: 'cosmos/55-cancri-e.png', alt: 'Ilustração de 55 Cancri e, com superfície rochosa iluminada em tons alaranjados.', caption: 'Tem raio próximo de 1,9 vez o da Terra e orbita muito perto de sua estrela. É um laboratório para investigar mundos rochosos extremamente aquecidos.', credit: 'Ilustração de NASA, ESA, CSA e Dani Player (STScI)'},
+          {title: 'HD 189733 b', subtitle: 'Gigante gasoso · órbita de cerca de 2,2 dias', file: 'cosmos/hd-189733b.jpg', alt: 'Ilustração de HD 189733 b, um planeta azul próximo de sua estrela.', caption: 'O Hubble mediu sua cor azul em luz visível. Partículas de silicatos na atmosfera podem contribuir para espalhar a luz azul.', credit: 'Ilustração de NASA, ESA e M. Kornmesser'},
+          {title: 'Kepler-186 f', subtitle: 'Tamanho próximo ao da Terra · zona habitável', file: 'cosmos/kepler-186f.jpg', alt: 'Ilustração de Kepler-186 f com sua estrela avermelhada ao fundo.', caption: 'Foi o primeiro planeta de tamanho terrestre validado na zona habitável de outra estrela. A posição orbital indica uma condição possível para água líquida, dependendo da atmosfera.', credit: 'Ilustração de NASA/Ames/SETI Institute/JPL-Caltech'},
+        ],
+      },
+      {
+        id: 'clima', title: 'Como é o clima em outros mundos?',
+        text: 'A distância da estrela, a rotação e a atmosfera influenciam quanto calor um planeta recebe, retém e distribui.',
+        details: [
+          {title: 'Dias e noites permanentes', text: 'Em planetas com rotação sincronizada, uma face permanece voltada para a estrela. A circulação atmosférica pode transportar parte do calor para a face noturna.'},
+          {title: 'Nuvens e ventos', text: 'Em gigantes muito quentes, as nuvens podem conter materiais diferentes dos encontrados nas nuvens terrestres. Ventos também deslocam as regiões mais quentes da atmosfera.'},
+          {title: 'Mapas de temperatura', text: 'Ao medir a luz infravermelha ao longo da órbita, astrônomos acompanham diferentes partes do planeta. Essas curvas ajudam a estimar contrastes de temperatura e circulação de calor.'},
+        ],
+      },
+      {
+        id: 'outros-metodos', title: 'Outras formas de descobrir planetas',
+        text: 'Além de trânsitos e velocidade radial, outros métodos alcançam sistemas com características diferentes.',
+        details: [
+          {title: 'Imagem direta', text: 'Instrumentos bloqueiam ou reduzem o brilho da estrela para separar a luz de companheiros mais fracos. Planetas grandes, jovens e distantes da estrela são alvos favoráveis.'},
+          {title: 'Microlentes gravitacionais', text: 'A gravidade de um objeto em primeiro plano amplia temporariamente a luz de uma estrela de fundo. Um planeta pode acrescentar uma alteração característica nesse sinal.'},
+          {title: 'Astrometria', text: 'Mede pequenas mudanças na posição da estrela no céu. O movimento causado pela atração de um planeta ajuda a investigar sua massa e órbita.'},
+          {title: 'Confirmação da descoberta', text: 'Sinais candidatos são comparados com explicações alternativas, como estrelas binárias. Observações repetidas e métodos complementares ajudam a confirmar a interpretação planetária.'},
+        ],
+      },
     ],
   },
 ];
@@ -440,6 +515,11 @@ export default function CosmosGuide({topic}: {topic: CosmosTopic}) {
                         <span>{item.subtitle}</span>
                         <p>{item.caption}</p>
                         <small>Imagem · {item.credit}</small>
+                        {topic.video && (
+                          <a className="nasa-image-download" href={import.meta.env.BASE_URL + 'assets/' + item.file} download>
+                            <Download size={15} aria-hidden="true"/>Baixar imagem
+                          </a>
+                        )}
                       </div>
                     </li>
                   ))}
