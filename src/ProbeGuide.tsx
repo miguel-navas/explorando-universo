@@ -3,7 +3,7 @@ import {RadioTower} from 'lucide-react';
 const missions = [
   {
     name: 'Voyager 1 e 2', target: 'Planetas gigantes e espaço interestelar',
-    image: '/assets/destinations/sondas.jpg', alt: 'Ilustração de uma sonda Voyager no espaço.',
+    image: import.meta.env.BASE_URL + 'assets/destinations/sondas.jpg', alt: 'Ilustração de uma sonda Voyager no espaço.',
     description: 'As duas sondas passaram por Júpiter e Saturno. A Voyager 2 também sobrevoou Urano e Netuno. Ambas cruzaram a heliopausa, o limite da região dominada pelo vento solar.',
     mission: 'https://science.nasa.gov/mission/voyager/',
     source: 'https://www.jpl.nasa.gov/images/pia26353-nasas-voyager-probe-speeds-through-space-artists-concept/',
@@ -11,7 +11,7 @@ const missions = [
   },
   {
     name: 'Cassini–Huygens', target: 'Saturno, seus anéis e suas luas',
-    image: '/assets/probes/cassini.jpg', alt: 'Ilustração da Cassini atravessando uma pluma de Encélado.',
+    image: import.meta.env.BASE_URL + 'assets/probes/cassini.jpg', alt: 'Ilustração da Cassini atravessando uma pluma de Encélado.',
     description: 'Cassini orbitou Saturno e investigou seus anéis e luas. Em 2005, a sonda europeia Huygens desceu de paraquedas pela atmosfera de Titã e transmitiu dados da superfície.',
     mission: 'https://science.nasa.gov/mission/cassini-huygens/',
     source: 'https://science.nasa.gov/resource/cassini-at-enceladus-illustration/',
@@ -19,7 +19,7 @@ const missions = [
   },
   {
     name: 'Juno', target: 'Júpiter',
-    image: '/assets/probes/juno.jpg', alt: 'Ilustração da sonda Juno sobre o polo sul de Júpiter.',
+    image: import.meta.env.BASE_URL + 'assets/probes/juno.jpg', alt: 'Ilustração da sonda Juno sobre o polo sul de Júpiter.',
     description: 'A órbita polar da Juno permite estudar as nuvens, a gravidade e o campo magnético de Júpiter. Essas medições ajudam a investigar o interior do planeta.',
     mission: 'https://science.nasa.gov/mission/juno/',
     source: 'https://science.nasa.gov/photojournal/juno-over-jupiters-south-pole-illustration/',
@@ -27,7 +27,7 @@ const missions = [
   },
   {
     name: 'New Horizons', target: 'Plutão e o Cinturão de Kuiper',
-    image: '/assets/probes/plutao.jpg', alt: 'Mosaico de imagens da superfície de Plutão registradas pela New Horizons.',
+    image: import.meta.env.BASE_URL + 'assets/probes/plutao.jpg', alt: 'Mosaico de imagens da superfície de Plutão registradas pela New Horizons.',
     description: 'Em 2015, realizou o primeiro sobrevoo de Plutão e suas luas. Em 2019, passou por Arrokoth, um pequeno corpo gelado do Cinturão de Kuiper.',
     mission: 'https://science.nasa.gov/mission/new-horizons/',
     source: 'https://science.nasa.gov/photojournal/plutos-surface-in-detail/',
@@ -44,7 +44,7 @@ const missionTypes = [
 export default function ProbeGuide() {
   return (
     <section className="destination probe-destination" aria-labelledby="probe-title">
-      <img className="destination-image" src="/assets/destinations/sondas.jpg" alt=""/>
+      <img className="destination-image" src={import.meta.env.BASE_URL + 'assets/destinations/sondas.jpg'} alt=""/>
       <div className="destination-content content-width">
         <div className="galaxy-intro">
           <header className="galaxy-heading">

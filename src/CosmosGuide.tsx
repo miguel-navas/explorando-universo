@@ -232,7 +232,7 @@ export default function CosmosGuide({topic}: {topic: CosmosTopic}) {
               </div>
               {topic.figures.filter(figure => figure.section === section.id).map(figure => (
                 <figure className="cosmos-figure" key={figure.file}>
-                  <img src={'/assets/cosmos/' + figure.file} alt={figure.alt} loading="lazy" decoding="async"/>
+                  <img src={import.meta.env.BASE_URL + 'assets/cosmos/' + figure.file} alt={figure.alt} loading="lazy" decoding="async"/>
                   <figcaption>
                     {figure.caption}
                     <span>Crédito da imagem · {figure.credit}</span>

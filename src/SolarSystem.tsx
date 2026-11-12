@@ -4,7 +4,7 @@ import {planets, sun, type SolarBody} from './solarData';
 import './solar.css';
 
 const bodies = [sun, ...planets];
-const asset = '/assets/solar/';
+const asset = import.meta.env.BASE_URL + 'assets/solar/';
 const kmPerLightYear = 9_460_730_472_581;
 const exampleSpeed = 40_000;
 const number = new Intl.NumberFormat('pt-BR', {maximumFractionDigits: 2});

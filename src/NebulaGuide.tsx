@@ -2,35 +2,35 @@ import {Cloud} from 'lucide-react';
 
 const nebulae = [
   {
-    name: 'Carina', type: 'Nebulosa de emissão', image: '/assets/destinations/nebulosas.jpg',
+    name: 'Carina', type: 'Nebulosa de emissão', image: import.meta.env.BASE_URL + 'assets/destinations/nebulosas.jpg',
     alt: 'Nuvens luminosas de gás na Nebulosa de Carina.',
     description: 'A radiação de estrelas jovens e quentes ioniza o gás. Ao voltar a estados de menor energia, esse gás emite luz. Carina abriga regiões onde novas estrelas se formam.',
     source: 'https://esahubble.org/images/heic0707a/',
     credit: 'NASA, ESA, N. Smith e Hubble Heritage Team (STScI/AURA)',
   },
   {
-    name: 'NGC 1999', type: 'Nebulosa de reflexão', image: '/assets/nebulae/reflexao.jpg',
+    name: 'NGC 1999', type: 'Nebulosa de reflexão', image: import.meta.env.BASE_URL + 'assets/nebulae/reflexao.jpg',
     alt: 'Nuvem de poeira iluminada por uma estrela em NGC 1999.',
     description: 'A poeira espalha a luz da estrela jovem V380 Orionis. Muitas nebulosas de reflexão parecem azuladas porque os grãos espalham a luz azul com mais eficiência.',
     source: 'https://science.nasa.gov/asset/hubble/reflection-nebula-ngc-1999/',
     credit: 'NASA e Hubble Heritage Team (STScI)',
   },
   {
-    name: 'Cabeça de Cavalo', type: 'Nebulosa escura', image: '/assets/nebulae/escura.jpg',
+    name: 'Cabeça de Cavalo', type: 'Nebulosa escura', image: import.meta.env.BASE_URL + 'assets/nebulae/escura.jpg',
     alt: 'Nuvem escura com a silhueta de uma cabeça de cavalo diante de gás luminoso.',
     description: 'Uma nuvem densa de gás e poeira bloqueia a luz visível que vem de trás. A silhueta aparece contra o brilho da nebulosa de emissão IC 434.',
     source: 'https://science.nasa.gov/asset/hubble/the-horsehead-nebula/',
     credit: 'NASA, NOAO, ESA e Hubble Heritage Team (STScI/AURA)',
   },
   {
-    name: 'Anel do Sul (NGC 3132)', type: 'Nebulosa planetária', image: '/assets/nebulae/anel.png',
+    name: 'Anel do Sul (NGC 3132)', type: 'Nebulosa planetária', image: import.meta.env.BASE_URL + 'assets/nebulae/anel.png',
     alt: 'Duas imagens infravermelhas do Anel do Sul, com camadas de gás ao redor das estrelas centrais.',
     description: 'Quando uma estrela semelhante ao Sol perde suas camadas externas, o gás expelido pode brilhar ao redor do núcleo que se torna uma anã branca. O nome vem da aparência arredondada em telescópios antigos.',
     source: 'https://science.nasa.gov/asset/webb/southern-ring-nebula-nircam-and-miri-images-side-by-side/',
     credit: 'NASA, ESA, CSA e STScI',
   },
   {
-    name: 'Caranguejo (M1)', type: 'Remanescente de supernova', image: '/assets/nebulae/caranguejo.png',
+    name: 'Caranguejo (M1)', type: 'Remanescente de supernova', image: import.meta.env.BASE_URL + 'assets/nebulae/caranguejo.png',
     alt: 'Filamentos entrelaçados e emissão difusa na Nebulosa do Caranguejo.',
     description: 'O material lançado na explosão de uma estrela se expande pelo espaço. No centro da Nebulosa do Caranguejo está um pulsar, uma estrela de nêutrons em rotação rápida.',
     source: 'https://science.nasa.gov/asset/webb/crab-nebula-nircam-and-miri-image/',
@@ -41,7 +41,7 @@ const nebulae = [
 export default function NebulaGuide() {
   return (
     <section className="destination nebula-destination" aria-labelledby="nebula-title">
-      <img className="destination-image" src="/assets/destinations/nebulosas.jpg" alt=""/>
+      <img className="destination-image" src={import.meta.env.BASE_URL + 'assets/destinations/nebulosas.jpg'} alt=""/>
       <div className="destination-content content-width">
         <div className="galaxy-intro">
           <header className="galaxy-heading">

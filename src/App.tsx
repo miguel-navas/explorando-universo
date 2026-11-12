@@ -9,7 +9,7 @@ import SolarSystem from './SolarSystem';
 import {useEffect,useRef,useState} from 'react';
 import {Home,Orbit,Sparkles,Network,Cloud,Satellite,RadioTower,Telescope,Search,Moon,Sun,Play,BookOpen,ArrowRight,ArrowLeft,ChevronLeft,ChevronRight,X,Menu,ArrowUpRight,Compass,ChevronDown} from 'lucide-react';
 import type {LucideIcon} from 'lucide-react';
-const A='/assets/';
+const A=import.meta.env.BASE_URL + 'assets/';
 type Section={id:string;name:string;subtitle:string;description:string;image:string;icon:LucideIcon;credit:string;source:string};
 const sections:Section[]=[
 {id:'solar',name:'Sistema Solar',subtitle:'Planetas, luas, asteroides e muito mais',description:'Explore os oito planetas, o Sol, suas luas e os pequenos mundos que compõem nossa vizinhança cósmica.',image:'solar.jpg',icon:Orbit,credit:'NASA/JPL',source:'https://science.nasa.gov/photojournal/photojournal-home-page-graphic-2007/'},

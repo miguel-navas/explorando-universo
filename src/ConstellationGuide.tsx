@@ -10,7 +10,7 @@ const charts = [
 export default function ConstellationGuide() {
   return (
     <section className="destination constellation-destination" aria-labelledby="constellation-title">
-      <img className="destination-image" src="/assets/destinations/constelacoes.jpg" alt=""/>
+      <img className="destination-image" src={import.meta.env.BASE_URL + 'assets/destinations/constelacoes.jpg'} alt=""/>
       <div className="destination-content content-width">
         <div className="galaxy-intro">
           <header className="galaxy-heading">
@@ -33,8 +33,8 @@ export default function ConstellationGuide() {
           <ul className="galaxy-grid galaxy-gallery constellation-charts">
             {charts.map(chart => (
               <li className="galaxy-item" key={chart.id}>
-                <a href={'/assets/constellations/' + chart.id + '.svg'} aria-label={'Ampliar mapa de ' + chart.name}>
-                  <img src={'/assets/constellations/' + chart.id + '.svg'} alt={'Mapa estelar de ' + chart.name} width="640" height="400" loading="lazy"/>
+                <a href={import.meta.env.BASE_URL + 'assets/constellations/' + chart.id + '.svg'} aria-label={'Ampliar mapa de ' + chart.name}>
+                  <img src={import.meta.env.BASE_URL + 'assets/constellations/' + chart.id + '.svg'} alt={'Mapa estelar de ' + chart.name} width="640" height="400" loading="lazy"/>
                 </a>
                 <div className="galaxy-card-text">
                   <h3>{chart.name}</h3>
@@ -51,7 +51,7 @@ export default function ConstellationGuide() {
           <h2 id="constellation-orion">Órion em fotografia</h2>
           <p>Compare o mapa com a foto. Na imagem, as Três Marias formam uma pequena linha diagonal perto do centro. O brilho difuso à esquerda do cinturão é a Nebulosa de Órion.</p>
           <figure className="cosmos-figure">
-            <img src="/assets/destinations/constelacoes.jpg" alt="Fotografia de Órion com o cinturão de três estrelas e a nebulosa brilhante à esquerda." loading="lazy"/>
+            <img src={import.meta.env.BASE_URL + 'assets/destinations/constelacoes.jpg'} alt="Fotografia de Órion com o cinturão de três estrelas e a nebulosa brilhante à esquerda." loading="lazy"/>
             <figcaption><a href="https://www.eso.org/public/images/orion-ch17-bardon-cc/">Fotografia de Zdeněk Bardon/ESO</a></figcaption>
           </figure>
         </section>

@@ -76,7 +76,7 @@ export default function GalaxyGuide({description}: {description: string}) {
         <ul className="galaxy-grid galaxy-gallery">
           {types.map(([name, image, example, source, credit, description]) => (
             <li className="galaxy-item" key={name}>
-              <img src={'/assets/galaxies/' + image + '.jpg'} alt={example} width="640" height="400" loading="lazy" decoding="async"/>
+              <img src={import.meta.env.BASE_URL + 'assets/galaxies/' + image + '.jpg'} alt={example} width="640" height="400" loading="lazy" decoding="async"/>
               <div className="galaxy-card-text">
                 <h3>{name}</h3>
                 <span>{example}</span>
@@ -94,7 +94,7 @@ export default function GalaxyGuide({description}: {description: string}) {
         <ul className="galaxy-grid galaxy-gallery">
           {examples.map(([id, name, type, description, source, credit]) => (
             <li className="galaxy-item" key={id}>
-              <img src={'/assets/galaxies/' + id + '.jpg'} alt={'Imagem de ' + name} width="640" height="400" loading="lazy" decoding="async"/>
+              <img src={import.meta.env.BASE_URL + 'assets/galaxies/' + id + '.jpg'} alt={'Imagem de ' + name} width="640" height="400" loading="lazy" decoding="async"/>
               <div className="galaxy-card-text">
                 <h3>{name}</h3>
                 <span>{type}</span>

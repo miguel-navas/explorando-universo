@@ -2,27 +2,27 @@ import {Satellite} from 'lucide-react';
 
 const examples = [
   {
-    name: 'Lua', type: 'Satélite natural', image: '/assets/satellites/moon-apollo11.jpg', imageClass: 'satellite-moon-photo',
+    name: 'Lua', type: 'Satélite natural', image: import.meta.env.BASE_URL + 'assets/satellites/moon-apollo11.jpg', imageClass: 'satellite-moon-photo',
     alt: 'Disco inteiro da Lua fotografado pela tripulação da Apollo 11.',
     text: 'A Lua orbita a Terra. As fases que vemos mudam conforme nossa perspectiva da parte iluminada pelo Sol.',
     source: 'https://esrs.jsc.nasa.gov/SearchPhotos/photo.pl?frame=6667&mission=AS11&roll=44', credit: 'Fotografia da Apollo 11 (NASA)',
   },
   {
-    name: 'Estação Espacial Internacional', type: 'Pesquisa em órbita', image: '/assets/destinations/satelites.jpg',
+    name: 'Estação Espacial Internacional', type: 'Pesquisa em órbita', image: import.meta.env.BASE_URL + 'assets/destinations/satelites.jpg',
     alt: 'Estação Espacial Internacional com seus painéis solares acima da Terra.',
     text: 'A estação é um laboratório em órbita baixa. A tripulação realiza experimentos em microgravidade e usa instrumentos para observar a Terra.',
     source: 'https://science.nasa.gov/image-article/apod-2016-april-18-the-international-space-station-over-earth/',
     credit: 'Tripulações STS-132 e Expedição 23/NASA',
   },
   {
-    name: 'Landsat 9', type: 'Observação da Terra', image: '/assets/satellites/landsat.jpg',
+    name: 'Landsat 9', type: 'Observação da Terra', image: import.meta.env.BASE_URL + 'assets/satellites/landsat.jpg',
     alt: 'Ilustração do Landsat 9 em órbita sobre a Terra.',
     text: 'O satélite da NASA e do USGS registra a superfície em várias faixas de luz. Suas imagens ajudam a acompanhar mudanças na vegetação, na água e nas cidades.',
     source: 'https://science.nasa.gov/mission/landsat/news/mission-success-celebrating-landsat-9s-five-year-design-life-milestone/',
     credit: 'Ilustração de NASA/Ross Walter',
   },
   {
-    name: 'GOES-19', type: 'Meteorologia', image: '/assets/satellites/goes.jpg',
+    name: 'GOES-19', type: 'Meteorologia', image: import.meta.env.BASE_URL + 'assets/satellites/goes.jpg',
     alt: 'Ilustração do satélite meteorológico GOES-19 em órbita.',
     text: 'Da órbita geoestacionária, acompanha a mesma região da Terra. Isso permite observar a evolução de nuvens, tempestades e furacões.',
     source: 'https://www.noaa.gov/news-release/noaas-goes-19-satellite-now-operational-providing-critical-new-data-to-forecasters',
@@ -39,7 +39,7 @@ const orbits = [
 export default function SatelliteGuide() {
   return (
     <section className="destination satellite-destination" aria-labelledby="satellite-title">
-      <img className="destination-image" src="/assets/destinations/satelites.jpg" alt=""/>
+      <img className="destination-image" src={import.meta.env.BASE_URL + 'assets/destinations/satelites.jpg'} alt=""/>
       <div className="destination-content content-width">
         <div className="galaxy-intro">
           <header className="galaxy-heading">
