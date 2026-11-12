@@ -1,4 +1,5 @@
-import {Bot, CircleDot, Compass, FlaskConical, Globe, History, Layers, Orbit, Plane, Rocket, Scan, Search, Sparkles, Star, Telescope, Users, Waypoints} from 'lucide-react';
+import {Bot, CircleDot, Compass, Download, FlaskConical, Globe, History, Layers, Orbit, Plane, PlayCircle, Rocket, Ruler, Scan, Search, Sparkles, Star, Telescope, Users, Waypoints} from 'lucide-react';
+import NasaMedia, {type NasaMediaTopic} from './NasaMedia';
 
 const sectionIcons = {
   'visao-geral': Compass,
@@ -16,6 +17,9 @@ const sectionIcons = {
   china: Globe,
   'onibus-espacial': Plane,
   pesquisas: FlaskConical,
+  crescimento: Sparkles,
+  'sistemas-planetarios': Orbit,
+  medidas: Ruler,
 };
 
 type CosmosFigure = {file: string; alt: string; caption: string; credit: string};
@@ -35,6 +39,7 @@ type CosmosTopic = {
   icon: typeof CircleDot;
   figures: (CosmosFigure & {section: string})[];
   attribution?: string;
+  video?: NasaMediaTopic;
   sections: CosmosSection[];
 };
 
@@ -191,6 +196,7 @@ export const cosmosTopics: CosmosTopic[] = [
     name: 'Buracos negros',
     subtitle: 'Horizonte de eventos, tipos e anatomia',
     icon: CircleDot,
+    video: 'buracos-negros',
     figures: [{
       section: 'anatomia',
       file: 'cosmos/buracos-negros.jpg',
@@ -227,6 +233,15 @@ export const cosmosTopics: CosmosTopic[] = [
           {title: 'Jatos de partículas', text: 'Em alguns sistemas, campos magnéticos nas proximidades do buraco negro ajudam a acelerar e direcionar partículas em jatos que podem viajar a velocidades próximas à da luz.'},
         ],
       },
+      {
+        id: 'crescimento', title: 'Como os buracos negros crescem?',
+        text: 'A matéria que atravessa o horizonte de eventos aumenta a massa do buraco negro. Fusões com outros buracos negros também contribuem para o crescimento.',
+        details: [
+          {title: 'Acreção e brilho', text: 'Antes de cair, o gás pode formar um disco muito quente. A radiação desse material permite localizar um buraco negro e acompanhar mudanças na alimentação ao longo do tempo.'},
+          {title: 'Fusões e ondas gravitacionais', text: 'Durante a aproximação e a fusão de dois buracos negros, parte da energia do sistema é emitida em ondas gravitacionais. A forma do sinal ajuda a estimar as massas dos objetos envolvidos.'},
+          {title: 'Uma questão sobre as primeiras galáxias', text: 'Astrônomos investigam como alguns buracos negros supermassivos cresceram tão cedo no Universo. O tamanho das sementes iniciais e a rapidez com que ganharam matéria são partes desse problema.'},
+        ],
+      },
     ],
   },
   {
@@ -234,6 +249,7 @@ export const cosmosTopics: CosmosTopic[] = [
     name: 'Estrelas',
     subtitle: 'Ciclo de vida, tipos e sistemas múltiplos',
     icon: Star,
+    video: 'estrelas',
     figures: [{
       section: 'visao-geral',
       file: 'cosmos/estrelas.png',
@@ -279,6 +295,15 @@ export const cosmosTopics: CosmosTopic[] = [
           {title: 'Binárias de raios X', text: 'Uma estrela de nêutrons ou um buraco negro pode atrair gás de uma estrela companheira. Ao aquecer, esse gás emite raios X.'},
         ],
       },
+      {
+        id: 'sistemas-planetarios', title: 'Como nascem os sistemas planetários?',
+        text: 'A formação de planetas acompanha o nascimento das estrelas. Parte do material da nuvem que colapsa permanece em um disco girando ao redor da estrela jovem.',
+        details: [
+          {title: 'De poeira a planetesimais', text: 'Grãos de rocha e gelo colidem e podem se agregar em corpos maiores, chamados planetesimais. Novas colisões e a gravidade permitem o crescimento de embriões planetários.'},
+          {title: 'O disco deixa pistas', text: 'O material do disco emite radiação infravermelha. Telescópios podem detectar esse excesso de luz ou registrar a estrutura do disco para estudar sua evolução.'},
+          {title: 'Uma história que também está nas rochas', text: 'Meteoritos e amostras trazidas por missões espaciais guardam pistas químicas e físicas sobre o início do Sistema Solar, há cerca de 4,6 bilhões de anos.'},
+        ],
+      },
     ],
   },
   {
@@ -286,6 +311,7 @@ export const cosmosTopics: CosmosTopic[] = [
     name: 'Exoplanetas',
     subtitle: 'Busca por vida, descobertas e mundos incomuns',
     icon: Orbit,
+    video: 'exoplanetas',
     figures: [{
       section: 'visao-geral',
       file: 'cosmos/exoplanetas.jpg',
@@ -339,6 +365,15 @@ export const cosmosTopics: CosmosTopic[] = [
           {title: 'GJ 436 b', text: 'Tem tamanho parecido com o de Netuno e completa uma órbita em cerca de 2,6 dias terrestres. Observações ultravioletas do Hubble revelaram uma extensa nuvem de hidrogênio escapando de sua atmosfera.'},
         ],
       },
+      {
+        id: 'medidas', title: 'O que conseguimos medir em um exoplaneta?',
+        text: 'Os métodos de detecção fornecem medidas complementares. Juntas, elas ajudam a construir uma descrição do planeta e de seu sistema.',
+        details: [
+          {title: 'Raio e período orbital', text: 'O trânsito permite estimar o raio em relação ao da estrela. O intervalo entre trânsitos sucessivos do mesmo planeta revela quanto tempo ele leva para completar a órbita.'},
+          {title: 'Massa e densidade média', text: 'Ao combinar um trânsito com medições de velocidade radial, os astrônomos podem estimar massa e raio. A densidade média ajuda a investigar a proporção de rocha, gelo e gás.'},
+          {title: 'Atmosfera e incertezas', text: 'Os espectros revelam padrões de absorção associados a gases. Nuvens, neblinas e diferentes composições podem produzir sinais parecidos, por isso os dados são comparados com modelos e novas observações.'},
+        ],
+      },
     ],
   },
 ];
@@ -369,6 +404,12 @@ export default function CosmosGuide({topic}: {topic: CosmosTopic}) {
               </button>
             );
           })}
+          {topic.video && (
+            <button type="button" onClick={() => openSection('multimidia')}>
+              <PlayCircle size={20} aria-hidden="true"/>
+              <span className="cosmos-subnav-label">Vídeo e downloads</span>
+            </button>
+          )}
         </nav>
 
         {topic.sections.map(section => {
@@ -410,12 +451,18 @@ export default function CosmosGuide({topic}: {topic: CosmosTopic}) {
                   <figcaption>
                     {figure.caption}
                     <span>Crédito da imagem · {figure.credit}</span>
+                    {topic.video && (
+                      <a className="nasa-image-download" href={import.meta.env.BASE_URL + 'assets/' + figure.file} download>
+                        <Download size={15} aria-hidden="true"/>Baixar imagem
+                      </a>
+                    )}
                   </figcaption>
                 </figure>
               ))}
             </section>
           );
         })}
+        {topic.video && <NasaMedia topic={topic.video} id={topic.id + '-multimidia'}/>}
         <p className="cosmos-source-note">{topic.attribution ?? 'Conteúdo adaptado de NASA Science e NASA Jet Propulsion Laboratory.'}</p>
       </div>
     </section>

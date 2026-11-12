@@ -657,6 +657,61 @@
   font-size: 12px;
 }
 
+.nasa-video {
+  margin: 16px 0;
+}
+
+.nasa-video video {
+  display: block;
+  width: 100%;
+  max-height: 540px;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  border-radius: 12px;
+}
+
+.nasa-video figcaption {
+  margin-top: 12px;
+  color: #cad6e6;
+  font-size: 14px;
+  line-height: 1.6;
+  max-width: 100ch;
+}
+
+.nasa-downloads {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.nasa-downloads a,
+a.nasa-image-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 12px;
+  color: #ffb55e;
+  background: #0c2038;
+  border: 1px solid #52739e;
+  border-radius: 8px;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+a.nasa-image-download {
+  margin-top: 10px;
+}
+
+.nasa-downloads a:is(:hover, :focus-visible),
+a.nasa-image-download:is(:hover, :focus-visible) {
+  border-color: #ffad34;
+}
+
+.nasa-media-panel .nasa-media-credit {
+  font-size: 12px;
+  color: #cad6e6;
+}
+
 @media (max-height: 520px) {
   .cosmos-subnav {
     gap: 3px;

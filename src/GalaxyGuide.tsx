@@ -1,4 +1,5 @@
-import {Sparkles} from 'lucide-react';
+import {Download, Sparkles} from 'lucide-react';
+import NasaMedia from './NasaMedia';
 
 const composition = [
   ['Estrelas e sistemas planetários', 'As estrelas produzem a maior parte da luz visível da galáxia. Muitas têm planetas em órbita.'],
@@ -82,6 +83,9 @@ export default function GalaxyGuide({description}: {description: string}) {
                 <span>{example}</span>
                 <p>{description}</p>
                 <a className="galaxy-credit" href={source}>{credit}</a>
+                <a className="nasa-image-download" href={import.meta.env.BASE_URL + 'assets/galaxies/' + image + '.jpg'} download>
+                  <Download size={15} aria-hidden="true"/>Baixar imagem
+                </a>
               </div>
             </li>
           ))}
@@ -100,6 +104,9 @@ export default function GalaxyGuide({description}: {description: string}) {
                 <span>{type}</span>
                 <p>{description}</p>
                 <a className="galaxy-credit" href={source}>{credit}</a>
+                <a className="nasa-image-download" href={import.meta.env.BASE_URL + 'assets/galaxies/' + id + '.jpg'} download>
+                  <Download size={15} aria-hidden="true"/>Baixar imagem
+                </a>
               </div>
             </li>
           ))}
@@ -122,6 +129,27 @@ export default function GalaxyGuide({description}: {description: string}) {
           <a href="https://www.desi.lbl.gov/2026/07/03/exploring-what-desi-measures-an-interactive-cosmic-web-in-your-browser/">Explorar o mapa interativo do DESI</a>
         </p>
       </section>
+
+      <section className="destination-panel" aria-labelledby="galaxy-evolution">
+        <h2 id="galaxy-evolution">Como as galáxias evoluem?</h2>
+        <p>Imagens de galáxias a diferentes distâncias mostram épocas diferentes da história cósmica. Comparando essas populações, astrônomos investigam como as galáxias crescem e mudam de forma.</p>
+        <dl className="galaxy-grid">
+          <div className="galaxy-item">
+            <dt>Gravidade e formação de estrelas</dt>
+            <dd>O gás se concentra pela gravidade e pode formar novas estrelas. A quantidade de gás disponível influencia o ritmo desse processo.</dd>
+          </div>
+          <div className="galaxy-item">
+            <dt>Encontros e caudas de maré</dt>
+            <dd>Quando duas galáxias se aproximam, a atração gravitacional pode deformar seus discos e produzir longas caudas. A compressão das nuvens de gás pode estimular o nascimento de estrelas.</dd>
+          </div>
+          <div className="galaxy-item">
+            <dt>Fusões</dt>
+            <dd>Alguns encontros terminam com as duas galáxias formando um único sistema. A distribuição das estrelas, do gás e da poeira pode mudar bastante, e parte do material pode alimentar o buraco negro central.</dd>
+          </div>
+        </dl>
+      </section>
+
+      <NasaMedia topic="galaxias" id="galaxy-multimedia"/>
 
       <section className="destination-panel" aria-labelledby="galaxy-studies">
         <h2 id="galaxy-studies">Como as galáxias são estudadas</h2>
