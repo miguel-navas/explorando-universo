@@ -1,4 +1,4 @@
-import {CircleDot, Compass, Layers, Orbit, Scan, Search, Sparkles, Star, Telescope, Waypoints} from 'lucide-react';
+import {Bot, CircleDot, Compass, History, Layers, Orbit, Rocket, Scan, Search, Sparkles, Star, Telescope, Users, Waypoints} from 'lucide-react';
 
 const sectionIcons = {
   'visao-geral': Compass,
@@ -8,6 +8,9 @@ const sectionIcons = {
   'busca-por-vida': Search,
   descobertas: Telescope,
   'mundos-incomuns': Sparkles,
+  tripuladas: Users,
+  roboticas: Bot,
+  'linha-do-tempo': History,
 };
 
 type CosmosSection = {
@@ -27,6 +30,72 @@ type CosmosTopic = {
 };
 
 export const cosmosTopics: CosmosTopic[] = [
+  {
+    id: 'missoes-espaciais',
+    name: 'Missões espaciais',
+    subtitle: 'Da chegada à Lua às sondas que exploram outros mundos',
+    icon: Rocket,
+    figures: [{
+      section: 'tripuladas',
+      file: 'apollo-missao.jpg',
+      alt: 'Buzz Aldrin na superfície lunar durante a missão Apollo 11.',
+      caption: 'Buzz Aldrin na Lua, fotografado por Neil Armstrong durante a Apollo 11, em julho de 1969.',
+      credit: 'NASA/JSC',
+    }, {
+      section: 'roboticas',
+      file: 'perseverance.gif',
+      alt: 'Mosaico de autorretratos do rover Perseverance com o helicóptero Ingenuity em Marte.',
+      caption: 'Perseverance e Ingenuity em Marte, em abril de 2021. O autorretrato foi montado com imagens obtidas pela câmera na ponta do braço robótico.',
+      credit: 'NASA/JPL-Caltech/MSSS',
+    }, {
+      section: 'linha-do-tempo',
+      file: 'artemis.jpg',
+      alt: 'Foguete SLS decola à noite no lançamento da missão Artemis I.',
+      caption: 'Lançamento da Artemis I em 16 de novembro de 2022. O voo de teste levou a nave Orion ao redor da Lua.',
+      credit: 'NASA/Bill Ingalls',
+    }],
+    sections: [
+      {
+        id: 'visao-geral', title: 'Visão geral',
+        text: 'Uma missão espacial reúne a nave, os instrumentos científicos, o lançamento e as equipes que planejam e acompanham o voo. O destino e a pergunta científica determinam o equipamento e a trajetória.',
+        details: [
+          {title: 'O que queremos descobrir?', text: 'As missões investigam a composição de planetas e luas, a história da água, a atividade do Sol e os efeitos do espaço sobre seres vivos.'},
+          {title: 'Como explorar?', text: 'Um sobrevoo registra o alvo durante uma passagem. Um orbitador o acompanha por mais tempo. Módulos de pouso estudam um local da superfície, enquanto rovers se deslocam entre diferentes terrenos.'},
+          {title: 'Como os dados chegam?', text: 'Antenas em terra recebem imagens e medições por rádio e enviam comandos. A distância impõe atrasos na comunicação, por isso as naves também executam tarefas programadas.'},
+        ],
+      },
+      {
+        id: 'tripuladas', title: 'Missões tripuladas',
+        text: 'Astronautas realizam experimentos, operam equipamentos e coletam amostras. As naves precisam oferecer condições de sobrevivência e meios para o retorno à Terra.',
+        details: [
+          {title: 'Apollo 11 · Lua', text: 'Lançada em 16 de julho de 1969, levou Neil Armstrong, Buzz Aldrin e Michael Collins. Armstrong e Aldrin pousaram em 20 de julho, enquanto Collins permaneceu em órbita lunar.'},
+          {title: 'O que a Apollo 11 estudou?', text: 'A tripulação coletou rochas e solo, fotografou o terreno e instalou instrumentos para investigar a atividade sísmica e medir a distância da Lua com pulsos de laser.'},
+          {title: 'Pesquisa em órbita · Estação Espacial Internacional', text: 'A estação é um laboratório para estudar o corpo humano, materiais e organismos em microgravidade. Os resultados apoiam a preparação de voos longos e pesquisas com aplicações na Terra.'},
+        ],
+      },
+      {
+        id: 'roboticas', title: 'Missões robóticas',
+        text: 'Sondas, módulos de pouso e rovers levam instrumentos a destinos distantes. Cada missão combina observações para responder a perguntas específicas.',
+        details: [
+          {title: 'Voyager 1 e 2 · planetas gigantes', text: 'Lançadas em 1977, visitaram Júpiter e Saturno. A Voyager 2 também sobrevoou Urano e Netuno. Mais tarde, as duas cruzaram a heliopausa, que delimita a região dominada pelo vento solar.'},
+          {title: 'Cassini–Huygens · Saturno e Titã', text: 'Lançada em 1997, a missão estudou Saturno, seus anéis e luas. Em 14 de janeiro de 2005, a sonda europeia Huygens desceu pela atmosfera de Titã e transmitiu dados de sua superfície.'},
+          {title: 'Perseverance · Marte', text: 'Lançado em 30 de julho de 2020, o rover pousou na cratera Jezero em 18 de fevereiro de 2021. Investiga um antigo ambiente de lago e delta, procura indícios de vida microbiana passada e coleta amostras de rocha.'},
+          {title: 'Ingenuity · tecnologia de voo', text: 'O pequeno helicóptero que viajou com Perseverance demonstrou o voo motorizado e controlado em outro planeta. A atmosfera fina de Marte exigiu uma aeronave muito leve e rotores rápidos.'},
+        ],
+      },
+      {
+        id: 'linha-do-tempo', title: 'Linha do tempo',
+        text: 'Uma seleção de marcos mostra como a exploração passou de visitas curtas a operações prolongadas em outros mundos.',
+        details: [
+          {title: '1969 · Apollo 11', text: 'Primeiro pouso humano na Lua. A tripulação retornou à Terra em 24 de julho.'},
+          {title: '1977 · Voyager', text: 'A Voyager 2 foi lançada em 20 de agosto, seguida pela Voyager 1 em 5 de setembro.'},
+          {title: '1997–2017 · Cassini–Huygens', text: 'Após o lançamento em 1997, Cassini chegou à órbita de Saturno em 2004. A missão terminou em setembro de 2017 com uma entrada planejada na atmosfera do planeta.'},
+          {title: '2021 · Perseverance', text: 'O pouso em Jezero abriu uma nova etapa de investigação das rochas e dos antigos ambientes de Marte.'},
+          {title: '2022 · Artemis I', text: 'Voo de teste sem tripulação do foguete SLS e da nave Orion. Lançado em 16 de novembro, passou ao redor da Lua e terminou com a amerissagem em 11 de dezembro.'},
+        ],
+      },
+    ],
+  },
   {
     id: 'buracos-negros',
     name: 'Buracos negros',
