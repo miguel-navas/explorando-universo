@@ -87,3 +87,15 @@ export const sun: SolarBody = {
   temperature: 5500, gravity: 274, composition: 'Plasma de hidrogênio e hélio',
   orbit: 0, moons: [],
 };
+
+export const bodyDescriptions: Record<string, {description: string; discovery: string}> = {
+  sun: {description: 'Nossa estrela fornece a maior parte da energia que chega aos planetas.', discovery: 'A energia do Sol é produzida por fusão nuclear em seu interior.'},
+  mercury: {description: 'O menor planeta e o mais próximo do Sol, com uma superfície marcada por crateras.', discovery: 'Crateras e planícies registram impactos e episódios de atividade geológica.'},
+  venus: {description: 'Uma atmosfera espessa envolve o planeta mais quente do Sistema Solar.', discovery: 'O efeito estufa intenso ajuda a explicar suas temperaturas elevadas.'},
+  earth: {description: 'Oceanos, continentes e uma atmosfera que abriga a vida.', discovery: 'A água líquida na superfície e uma atmosfera protetora fazem da Terra um mundo singular entre os planetas conhecidos.'},
+  mars: {description: 'Vulcões, cânions e sinais de uma história antiga com água.', discovery: 'Missões robóticas analisam rochas para investigar o clima antigo e a história da água no planeta.'},
+  jupiter: {description: 'O maior planeta, com nuvens em faixas e tempestades gigantes.', discovery: 'Luas como Europa e Ganimedes ampliam a diversidade de mundos do sistema joviano.'},
+  saturn: {description: 'Anéis de gelo e uma família de luas com ambientes muito diferentes.', discovery: 'Titã e Encélado despertam interesse na busca por ambientes que possam reunir condições favoráveis à vida.'},
+  uranus: {description: 'Um gigante de gelo cuja rotação é fortemente inclinada.', discovery: 'Seu eixo inclinado produz estações extremas ao longo da órbita.'},
+  neptune: {description: 'Um mundo distante com ventos intensos e atmosfera azulada.', discovery: 'Sua lua Tritão tem órbita retrógrada, em sentido contrário à rotação do planeta.'},
+};

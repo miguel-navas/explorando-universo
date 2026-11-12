@@ -1,10 +1,12 @@
 import {useState} from 'react';
-import {ArrowLeftRight, ArrowDown, Layers, Moon as MoonIcon, Rocket, Thermometer} from 'lucide-react';
-import {planets, sun, type SolarBody} from './solarData';
-import SolarGuide from './SolarGuide';
+import {ArrowLeftRight, ArrowDown, Layers, Moon as MoonIcon, Rocket, Ruler, Thermometer} from 'lucide-react';
+import {planets, sun, bodyDescriptions, type SolarBody} from './solarData';
+import SolarGuide, {type SolarGuideTab} from './SolarGuide';
 import './solar.css';
 
 const bodies = [sun, ...planets];
+const tabs = [{id: 'planetas', name: 'Planetas'}, {id: 'luas', name: 'Luas'}, {id: 'corpos', name: 'Pequenos corpos'}, {id: 'regioes', name: 'Origem e regiões'}, {id: 'missoes', name: 'Missões e imagens'}] as const;
+type SolarTab = 'planetas' | SolarGuideTab;
 const asset = import.meta.env.BASE_URL + 'assets/solar/';
 const kmPerLightYear = 9_460_730_472_581;
 const exampleSpeed = 40_000;
@@ -36,6 +38,7 @@ function modelTravelTime(km: number) {
 }
 
 export default function SolarSystem() {
+  const [tab, setTab] = useState<SolarTab>('planetas');
   const [planet, setPlanet] = useState(planets[2]);
   const [origin, setOrigin] = useState(planets[2]);
   const [destinationId, setDestinationId] = useState('moon-0');
@@ -64,67 +67,48 @@ export default function SolarSystem() {
     {label: 'Diâmetro médio', value: number.format(planet.diameter) + ' km', icon: ArrowLeftRight},
     {label: planet.id === sun.id ? 'Temperatura da fotosfera' : 'Temperatura média', value: number.format(planet.temperature) + ' °C', icon: Thermometer},
     {label: 'Gravidade', value: number.format(planet.gravity) + ' m/s²', icon: ArrowDown},
+    {label: 'Distância média ao Sol', value: planet.id === sun.id ? '—' : number.format(planet.orbit / 149_600_000) + ' UA', icon: Ruler},
     {label: 'Composição', value: planet.composition, icon: Layers},
   ];
 
+  const description = bodyDescriptions[planet.id];
   return (
     <section className="solar-system" aria-labelledby="solar-title">
       <div className="solar-content content-width">
         <header className="solar-heading">
-          <h1 id="solar-title">Sistema Solar</h1>
-          <p>Explore o Sol, os planetas e suas luas</p>
+          <div><p className="solar-eyebrow">NOSSA VIZINHANÇA NO COSMOS</p><h1 id="solar-title">Sistema Solar</h1><p>Conheça os mundos, suas histórias e as missões que os exploram.</p></div>
+          <dl className="solar-overview"><div><dt>Planetas</dt><dd>8</dd></div><div><dt>Planetas anões reconhecidos</dt><dd>5</dd></div><div><dt>Anos de história</dt><dd>4,6 bi</dd></div></dl>
         </header>
-
-        <div className="solar-picker solar-panel" role="group" aria-label="Escolher astro">
-          {bodies.map(item => (
-            <button key={item.id} type="button" aria-pressed={item.id === planet.id} onClick={() => {
-              setPlanet(item);
-              changeOrigin(item);
-            }}>
-              <img className={item.id === sun.id ? 'solar-sun-image' : undefined} src={planetImage(item.id)} alt="" width="72" height="72"/>
-              {item.name}
-            </button>
-          ))}
+        <div className="solar-tabs" role="group" aria-label="Conteúdos do Sistema Solar">
+          {tabs.map(item => <button type="button" key={item.id} id={'solar-tab-' + item.id} aria-pressed={tab === item.id} aria-controls="solar-tab-content" onClick={() => setTab(item.id)}>{item.name}</button>)}
         </div>
-
-        <div className="solar-grid">
-          <article className="solar-panel solar-profile" aria-labelledby="solar-planet">
-            <div className="solar-profile-heading">
-              <h2 id="solar-planet">{planet.name}</h2>
-              <span>{planet.type}</span>
+        <section id="solar-tab-content" aria-labelledby={'solar-tab-' + tab}>
+          {tab === 'planetas' ? <>
+            <div className="solar-picker solar-panel" role="group" aria-label="Escolher astro">
+              {bodies.map(item => <button key={item.id} type="button" aria-pressed={item.id === planet.id} onClick={() => {setPlanet(item); changeOrigin(item);}}>
+                <img className={item.id === sun.id ? 'solar-sun-image' : undefined} src={planetImage(item.id)} alt="" width="72" height="72"/>{item.name}
+              </button>)}
             </div>
-            <div className="solar-portrait">
-              <img className={planet.id === sun.id ? 'solar-sun-image' : undefined} src={planetImage(planet.id)} alt={planet.name} width="420" height="330"/>
-              {planet.id === 'earth' && <img className="solar-orbit-moon" src={asset + 'moon.png'} alt="" width="58" height="58"/>}
-            </div>
-            <section className="solar-moons" aria-labelledby="solar-moons-title">
-              <h3 id="solar-moons-title"><MoonIcon size={20}/> {planet.id === sun.id ? 'Sistema planetário' : planet.moons.length > 2 ? 'Luas em destaque' : 'Luas'}</h3>
-              {planet.id === sun.id ? <p>Oito planetas orbitam o Sol.</p> : planet.moons.length === 0 ? <p>{planet.name} não tem luas naturais.</p> : (
-                <ul>
-                  {planet.moons.map((item, index) => (
-                    <li key={item.name}>
-                      <button type="button" onClick={() => changeOrigin(planet, 'moon-' + index)} aria-label={'Comparar distância de ' + planet.name + ' até ' + item.name}>
-                        {planet.id === 'earth' ? <img src={asset + 'moon.png'} alt="" width="44" height="44"/> : <MoonIcon size={21}/>}
-                        <span><strong>{item.name}</strong><small>Diâmetro {number.format(item.diameter)} km</small></span>
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </section>
-          </article>
-
-          <div className="solar-details">
-            <dl className="solar-panel solar-facts" aria-label={'Dados de ' + planet.name}>
-              {facts.map(({label, value, icon: Icon}) => (
-                <div key={label}>
-                  <Icon aria-hidden="true" size={24}/>
-                  <dt>{label}</dt>
-                  <dd>{value}</dd>
-                </div>
-              ))}
-            </dl>
-
+            <div className="solar-grid">
+              <article className="solar-panel solar-profile" aria-labelledby="solar-planet">
+                <div className="solar-profile-heading"><h2 id="solar-planet">{planet.name}</h2><span>{planet.type}</span></div>
+                <div className="solar-portrait"><img className={planet.id === sun.id ? 'solar-sun-image' : undefined} src={planetImage(planet.id)} alt={planet.name} width="420" height="330"/></div>
+                <p className="solar-planet-story">{description.description}</p>
+                <section className="solar-moons" aria-labelledby="solar-moons-title">
+                  <h3 id="solar-moons-title"><MoonIcon size={16} aria-hidden="true"/>{planet.id === sun.id ? 'Sistema planetário' : planet.moons.length > 2 ? 'Luas em destaque' : 'Luas'}</h3>
+                  {planet.id === sun.id ? <p>Oito planetas orbitam o Sol.</p> : planet.moons.length === 0 ? <p>{planet.name} não tem luas naturais.</p> : <ul>
+                    {planet.moons.map((item, index) => <li key={item.name}><button type="button" onClick={() => changeOrigin(planet, 'moon-' + index)} aria-label={'Comparar distância de ' + planet.name + ' até ' + item.name}>{item.name}</button></li>)}
+                  </ul>}
+                </section>
+                <p className="solar-image-note">Retrato NASA · tamanhos das imagens fora de escala</p>
+              </article>
+              <article className="solar-panel solar-information" aria-labelledby="solar-information-title">
+                <h2 id="solar-information-title">Conheça este mundo</h2>
+                <dl className="solar-facts" aria-label={'Dados de ' + planet.name}>
+                  {facts.map(({label, value, icon: Icon}) => <div key={label} className={label === 'Composição' ? 'solar-composition' : undefined}><Icon aria-hidden="true" size={18}/><dt>{label}</dt><dd>{value}</dd></div>)}
+                </dl>
+                <div className="solar-discovery"><h3>Uma descoberta para explorar</h3><p>{description.discovery}</p></div>
+              </article>
             <section className="solar-panel solar-travel" aria-labelledby="solar-travel-title">
               <h2 id="solar-travel-title"><Rocket size={25}/> Distâncias e viagens</h2>
               <div className="solar-travel-selects">
@@ -157,12 +141,11 @@ export default function SolarSystem() {
                 </p>
               </details>
             </section>
-          </div>
-        </div>
+            </div>
+          </> : <SolarGuide tab={tab}/>}
+        </section>
         <details className="solar-sources">
-          <summary>Explorar mais · asteroides, cometas, regiões distantes e fontes</summary>
-          <SolarGuide/>
-          <h3>Fontes e créditos</h3>
+          <summary>Fontes e créditos</summary>
           <div>
             <a href="https://science.nasa.gov/solar-system/">Sistema Solar (NASA)</a>
             <a href="https://science.nasa.gov/sun/facts/">Dados do Sol (NASA)</a>
@@ -174,7 +157,11 @@ export default function SolarSystem() {
             <a href="https://science.nasa.gov/solar-system/planets/">Retratos planetários (NASA)</a>
             <a href="https://science.nasa.gov/resource/hubble-takes-mars-portrait-near-close-approach/">Marte (NASA/ESA/Hubble)</a>
             <a href="https://spaceplace.nasa.gov/all-about-mercury/en/">Mercúrio (NASA Space Place)</a>
-            <a href="https://science.nasa.gov/resource/moon-mosaic/">Retrato da Lua (NASA SVS)</a>
+            <a href="https://science.nasa.gov/jupiter/jupiter-moons/europa/">Europa (NASA)</a>
+            <a href="https://science.nasa.gov/saturn/moons/titan/">Titã (NASA)</a>
+            <a href="https://science.nasa.gov/saturn/moons/enceladus/">Encélado (NASA)</a>
+            <a href="https://science.nasa.gov/mission/europa-clipper/">Europa Clipper (NASA)</a>
+            <a href="https://esrs.jsc.nasa.gov/SearchPhotos/photo.pl?frame=6667&mission=AS11&roll=44">Fotografia da Lua · Apollo 11 (NASA)</a>
             {isApollo && <a href="https://www.nasa.gov/missions/apollo/apollo-11/apollo-11-mission-overview/">Missão Apollo 11</a>}
           </div>
         </details>
