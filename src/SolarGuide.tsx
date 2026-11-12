@@ -43,12 +43,12 @@ const rocks = [
 
 export type SolarGuideTab = 'luas' | 'corpos' | 'regioes' | 'missoes';
 type GalleryItem = {name: string; image: string; alt: string; description: string; credit: string; tag?: string; measurement?: string; caption?: string};
-// Imagens NASA: Galileo; Cassini PIA06443; Europa Clipper PIA26068.
+// Imagens NASA: Galileo; Cassini PIA14599; Europa Clipper PIA26068.
 const moons: GalleryItem[] = [
   {name: 'Lua', tag: 'Terra', image: 'satellites/moon-apollo11.jpg', alt: 'Disco inteiro da Lua fotografado pela tripulação da Apollo 11.', description: 'Rochas, crateras e registros da história do Sistema Solar. É o único satélite natural da Terra.', measurement: 'Diâmetro · 3.475 km', credit: 'NASA · fotografia da Apollo 11'},
   {name: 'Europa', tag: 'Júpiter', image: 'solar-guide/europa.jpg', alt: 'Superfície gelada de Europa, marcada por fraturas.', description: 'Uma crosta de gelo cobre um oceano que pode reunir condições favoráveis à vida. A missão Europa Clipper investigará esse ambiente.', measurement: 'Diâmetro · 3.122 km', credit: 'NASA/JPL-Caltech/SETI Institute · Galileo'},
   {name: 'Titã', tag: 'Saturno', image: 'solar-guide/titan.jpg', alt: 'Titã envolta por sua atmosfera, com Saturno ao fundo.', description: 'Atmosfera espessa e lagos de metano e etano na superfície. A sonda Huygens pousou ali em 2005.', measurement: 'Diâmetro · 5.150 km', credit: 'NASA/JPL-Caltech/Space Science Institute'},
-  {name: 'Encélado', tag: 'Saturno', image: 'solar-guide/enceladus.jpg', alt: 'Pluma de material ejetado da região sul de Encélado.', description: 'Jatos lançam água e partículas de gelo de uma região próxima ao polo sul, fornecendo pistas sobre seu oceano interno.', measurement: 'Diâmetro · 504 km', credit: 'NASA/JPL/University of Arizona · Cassini'},
+  {name: 'Encélado', tag: 'Saturno', image: 'solar-guide/enceladus.jpg', alt: 'Pluma de material ejetado da região sul de Encélado.', description: 'Jatos lançam água e partículas de gelo de uma região próxima ao polo sul, fornecendo pistas sobre seu oceano interno.', measurement: 'Diâmetro · 504 km', credit: 'NASA/JPL-Caltech/Space Science Institute · Cassini'},
 ];
 const missions: GalleryItem[] = [
   {name: 'Europa Clipper', tag: 'Um mundo oceânico', image: 'solar-guide/europa-clipper.jpg', alt: 'Conceito artístico da sonda Europa Clipper em órbita de Júpiter.', description: 'Lançada em 14 de outubro de 2024, foi projetada para investigar Europa e avaliar se a lua reúne condições de habitabilidade.', credit: 'Conceito artístico · NASA/JPL-Caltech'},
