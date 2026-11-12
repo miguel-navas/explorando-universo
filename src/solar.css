@@ -339,6 +339,38 @@
   text-underline-offset: 3px;
 }
 
+.solar-library {
+  display: grid;
+  gap: 14px;
+  margin-top: 16px;
+  color: #f8fbff;
+  font-size: 16px;
+}
+
+.solar-library .galaxy-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+}
+
+.solar-library .galaxy-gallery img {
+  object-fit: contain;
+  background: #030b1a;
+}
+
+.solar-library p {
+  color: #cad6e6;
+  line-height: 1.6;
+}
+
+.solar-library .solar-library-caption {
+  margin-top: 10px;
+  font-size: 13px;
+}
+
+.solar-library small,
+.solar-library .solar-library-credit {
+  font-size: 12px;
+}
+
 @media (max-width: 850px) {
   .solar-system {
     background-color: #030b1a;

@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import {ArrowLeftRight, ArrowDown, Layers, Moon as MoonIcon, Rocket, Thermometer} from 'lucide-react';
 import {planets, sun, type SolarBody} from './solarData';
+import SolarGuide from './SolarGuide';
 import './solar.css';
 
 const bodies = [sun, ...planets];
@@ -159,8 +160,11 @@ export default function SolarSystem() {
           </div>
         </div>
         <details className="solar-sources">
-          <summary>Fontes e créditos</summary>
+          <summary>Explorar mais · asteroides, cometas, regiões distantes e fontes</summary>
+          <SolarGuide/>
+          <h3>Fontes e créditos</h3>
           <div>
+            <a href="https://science.nasa.gov/solar-system/">Sistema Solar (NASA)</a>
             <a href="https://science.nasa.gov/sun/facts/">Dados do Sol (NASA)</a>
             <a href="https://science.nasa.gov/photojournal/image-of-sun-from-nasas-solar-dynamics-observatory/">Imagem do Sol (NASA/GSFC/SDO)</a>
             <a href="https://nssdc.gsfc.nasa.gov/planetary/factsheet/">Temperaturas e gravidade (NASA)</a>
