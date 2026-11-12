@@ -1,7 +1,8 @@
 import {useState} from 'react';
 import {ArrowLeftRight, ArrowDown, Layers, Moon as MoonIcon, Rocket, Ruler, Thermometer} from 'lucide-react';
-import {planets, sun, bodyDescriptions, type SolarBody} from './solarData';
+import {planets, sun, bodyDescriptions, moonCountReference, type SolarBody} from './solarData';
 import SolarGuide, {type SolarGuideTab} from './SolarGuide';
+import PlanetAtmosphere from './PlanetAtmosphere';
 import './solar.css';
 
 const bodies = [sun, ...planets];
@@ -95,10 +96,12 @@ export default function SolarSystem() {
                 <div className="solar-portrait"><img className={planet.id === sun.id ? 'solar-sun-image' : undefined} src={planetImage(planet.id)} alt={planet.name} width="420" height="330"/></div>
                 <p className="solar-planet-story">{description.description}</p>
                 <section className="solar-moons" aria-labelledby="solar-moons-title">
-                  <h3 id="solar-moons-title"><MoonIcon size={16} aria-hidden="true"/>{planet.id === sun.id ? 'Sistema planetário' : planet.moons.length > 2 ? 'Luas em destaque' : 'Luas'}</h3>
-                  {planet.id === sun.id ? <p>Oito planetas orbitam o Sol.</p> : planet.moons.length === 0 ? <p>{planet.name} não tem luas naturais.</p> : <ul>
+                  <h3 id="solar-moons-title"><MoonIcon size={16} aria-hidden="true"/>{planet.id === sun.id ? 'Sistema planetário' : `${planet.moonCount} ${planet.moonCount === 1 ? 'lua confirmada' : 'luas confirmadas'}`}</h3>
+                  {planet.id === sun.id ? <p>Oito planetas orbitam o Sol.</p> : planet.moons.length === 0 ? <p>{planet.name} não tem luas naturais.</p> : <>
+                    {planet.moonCount! > planet.moons.length && <p className="solar-moon-selection">Em destaque</p>}
+                    <ul aria-label={'Luas apresentadas de ' + planet.name}>
                     {planet.moons.map((item, index) => <li key={item.name}><button type="button" onClick={() => changeOrigin(planet, 'moon-' + index)} aria-label={'Comparar distância de ' + planet.name + ' até ' + item.name}>{item.name}</button></li>)}
-                  </ul>}
+                  </ul></>}
                 </section>
                 <p className="solar-image-note">Retrato NASA · tamanhos das imagens fora de escala</p>
               </article>
@@ -108,6 +111,7 @@ export default function SolarSystem() {
                   {facts.map(({label, value, icon: Icon}) => <div key={label} className={label === 'Composição' ? 'solar-composition' : undefined}><Icon aria-hidden="true" size={18}/><dt>{label}</dt><dd>{value}</dd></div>)}
                 </dl>
                 <div className="solar-discovery"><h3>Uma descoberta para explorar</h3><p>{description.discovery}</p></div>
+                <PlanetAtmosphere body={planet}/>
               </article>
             <section className="solar-panel solar-travel" aria-labelledby="solar-travel-title">
               <h2 id="solar-travel-title"><Rocket size={25}/> Distâncias e viagens</h2>
@@ -153,6 +157,7 @@ export default function SolarSystem() {
             <a href="https://nssdc.gsfc.nasa.gov/planetary/factsheet/">Temperaturas e gravidade (NASA)</a>
             <a href="https://ssd.jpl.nasa.gov/planets/phys_par.html">Diâmetros planetários (JPL)</a>
             <a href="https://ssd.jpl.nasa.gov/sats/phys_par/">Dados das luas (JPL)</a>
+            <a href={moonCountReference.source}>Luas reconhecidas pela IAU · NASA/JPL · consulta {moonCountReference.checkedAt}</a>
             <a href="https://science.nasa.gov/photojournal/photojournal-home-page-graphic-2007/">Fundo (NASA/JPL)</a>
             <a href="https://science.nasa.gov/solar-system/planets/">Retratos planetários (NASA)</a>
             <a href="https://science.nasa.gov/resource/hubble-takes-mars-portrait-near-close-approach/">Marte (NASA/ESA/Hubble)</a>
@@ -161,7 +166,8 @@ export default function SolarSystem() {
             <a href="https://science.nasa.gov/saturn/moons/titan/">Titã (NASA)</a>
             <a href="https://science.nasa.gov/saturn/moons/enceladus/">Encélado (NASA)</a>
             <a href="https://science.nasa.gov/mission/europa-clipper/">Europa Clipper (NASA)</a>
-            <a href="https://esrs.jsc.nasa.gov/SearchPhotos/photo.pl?frame=6667&mission=AS11&roll=44">Fotografia da Lua · Apollo 11 (NASA)</a>
+            <a href="https://svs.gsfc.nasa.gov/5587/">Imagem da Lua cheia · NASA SVS/LRO</a>
+            <a href="https://svs.gsfc.nasa.gov/5587/">Fases e libração da Lua em 2026 · NASA SVS</a>
             {isApollo && <a href="https://www.nasa.gov/missions/apollo/apollo-11/apollo-11-mission-overview/">Missão Apollo 11</a>}
           </div>
         </details>

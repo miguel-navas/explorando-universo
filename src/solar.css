@@ -33,6 +33,26 @@
 .solar-moons h3, .solar-travel h2 { display: flex; align-items: center; gap: 8px; margin: 0; }
 .solar-moons h3 { font-size: 12px; color: #afc1d8; margin-bottom: 6px; }
 .solar-moons p { margin: 0; font-size: 13px; color: #cbd9eb; }
+.solar-moons .solar-moon-selection { font-size: 11px; color: #afc1d8; margin-bottom: 5px; }
+.solar-moon-counts { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 10px; margin: 0 0 14px; }
+.solar-moon-counts > div { display: flex; align-items: baseline; gap: 7px; }
+.solar-moon-counts dt { font-size: 12px; color: #cbd9eb; }
+.solar-moon-counts dd { font-size: 16px; color: #ffcf86; font-weight: 650; margin: 0; }
+.solar-atmosphere-button { display: inline-flex; align-items: center; gap: 8px; color: #ffcf86; background: #12253a; border: 1px solid #61728a; border-radius: 7px; padding: 8px 11px; font: inherit; font-size: 13px; margin-top: 14px; }
+.solar-atmosphere-button:hover { border-color: #ffb12b; }
+.solar-atmosphere-dialog { width: min(940px, calc(100vw - 32px)); }
+.solar-atmosphere-dialog h3 { margin: 18px 0 8px; font-size: 18px; }
+.solar-atmosphere-dialog p, .solar-atmosphere-dialog li { font-size: 15px; line-height: 1.6; color: #cbd9eb; }
+.solar-atmosphere-dialog figure { margin: 16px 0; }
+.solar-atmosphere-dialog img { max-height: none; }
+.solar-atmosphere-dialog .solar-atmosphere-source { font-size: 12px; }
+.solar-atmosphere-layers { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 16px; margin: 20px 0; }
+.solar-atmosphere-layers dt { color: #ffcf86; font-size: 14px; margin-bottom: 6px; }
+.solar-atmosphere-layers dd { color: #cbd9eb; font-size: 14px; line-height: 1.5; margin: 0; }
+.solar-moon-video { width: min(950px, calc(100vw - 32px)); }
+.solar-moon-video video { width: 100%; display: block; max-height: 52svh; background: #000; }
+.solar-moon-video p { font-size: 14px; line-height: 1.6; color: #cbd9eb; }
+.solar-moon-video .solar-video-credit { font-size: 12px; }
 .solar-moons ul { display: flex; flex-wrap: wrap; gap: 6px; padding: 0; margin: 0; list-style: none; }
 .solar-moons button { padding: 4px 8px; border: 1px solid #3a5473; border-radius: 6px; background: #0c223a; color: #eaf1fa; font-size: 12px; }
 .solar-moons button:hover { border-color: #ffb12b; }
@@ -68,7 +88,7 @@
 .solar-gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; list-style: none; padding: 0; margin: 0; }
 .solar-gallery-moons { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 .solar-gallery > li { overflow: hidden; display: flex; flex-direction: column; }
-.solar-gallery > li > img { display: block; width: 100%; height: clamp(150px, 20svh, 220px); object-fit: contain; background: #020812; }
+.solar-gallery-image > img { display: block; width: 100%; height: clamp(150px, 20svh, 220px); object-fit: contain; background: #020812; }
 .solar-gallery-text { padding: 16px; display: flex; flex-direction: column; flex: 1; }
 .solar-card-tag { color: #ffd18b; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 6px; }
 .solar-gallery h3 { margin: 0; font-size: 18px; }
@@ -121,13 +141,14 @@
   .solar-results > div { padding-block: 8px; }
   .solar-planet-story, .solar-discovery p { font-size: 13px; }
   .solar-moons { margin-top: 10px; padding-top: 8px; }
-  .solar-gallery > li > img { height: 120px; }
+  .solar-gallery-image > img { height: 120px; }
   .solar-gallery-text { padding: 12px; }
   .solar-gallery p { font-size: 13px; }
   .solar-library-heading { margin-block: 12px 14px; }
   .solar-library-note { margin-block: 12px 6px; }
 }
 @media (max-width: 1050px) {
+  .solar-moon-counts { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .solar-heading { align-items: flex-start; }
   .solar-overview { gap: 14px; padding-left: 16px; }
   .solar-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -136,6 +157,7 @@
   .solar-gallery-moons, .solar-region-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 650px) {
+  .solar-moon-counts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .solar-heading { display: block; }
   .solar-heading h1 { font-size: 36px; }
   .solar-overview { border: 0; padding: 15px 0 0; gap: 28px; }
@@ -152,5 +174,8 @@
   .solar-results { display: block; }
   .solar-travel select { font-size: 16px; min-height: 44px; }
   .solar-moons button, .solar-image-actions button, .solar-image-actions a { min-height: 40px; }
-  .solar-gallery > li > img { height: 220px; }
+  .solar-gallery-image > img { height: 220px; }
 }
+
+.solar-gallery-image { position: relative; }
+.solar-moon-video-trigger { position: absolute; right: 8px; bottom: 8px; display: inline-flex; align-items: center; gap: 5px; padding: 6px 8px; border: 1px solid #8199b4; border-radius: 6px; background: #071528ed; color: #ffcf86; font: inherit; font-size: 11px; }

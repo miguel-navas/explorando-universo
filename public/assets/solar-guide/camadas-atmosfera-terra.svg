@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="660" viewBox="0 0 960 660" role="img" aria-labelledby="title desc">
+<title id="title">Camadas da atmosfera terrestre</title>
+<desc id="desc">Esquema sem escala com cinco camadas: troposfera de zero a doze quilômetros, estratosfera até cinquenta, mesosfera até oitenta, termosfera até setecentos e exosfera até dez mil quilômetros. Os limites são aproximados e variáveis.</desc>
+<defs><linearGradient id="sky" x2="0" y2="1"><stop stop-color="#03081a"/><stop offset=".5" stop-color="#154b88"/><stop offset="1" stop-color="#62bbf0"/></linearGradient><linearGradient id="earth" x2="0" y2="1"><stop stop-color="#2e8e83"/><stop offset="1" stop-color="#123d68"/></linearGradient></defs>
+<rect width="960" height="660" rx="18" fill="#071528"/>
+<text x="40" y="48" fill="#ffcb79" font-family="Arial,sans-serif" font-size="27" font-weight="700">Da superfície ao espaço</text>
+<rect x="40" y="76" width="350" height="480" rx="12" fill="url(#sky)"/>
+<g fill="#f3f7fc" font-family="Arial,sans-serif">
+<circle cx="80" cy="108" r="2"/><circle cx="310" cy="121" r="2"/><circle cx="230" cy="96" r="1.5"/>
+<path d="M40 540 Q210 466 390 540 V556 H40Z" fill="url(#earth)"/>
+<g stroke="#cfebff" stroke-opacity=".55" fill="none"><path d="M40 179 H390"/><path d="M40 306 H390"/><path d="M40 383 H390"/><path d="M40 454 H390"/></g>
+<g font-size="17" fill="#e5f3ff"><text x="58" y="157">10.000 km</text><text x="58" y="205">700 km</text><text x="58" y="333">80 km</text><text x="58" y="411">50 km</text><text x="58" y="483">12 km</text><text x="157" y="539">SUPERFÍCIE</text></g>
+<g stroke="#6fc5ef" stroke-width="1.5"><path d="M390 125 H435"/><path d="M390 244 H435"/><path d="M390 346 H435"/><path d="M390 421 H435"/><path d="M390 495 H435"/></g>
+<g font-size="23" font-weight="700"><text x="455" y="120">Exosfera</text><text x="455" y="239">Termosfera</text><text x="455" y="341">Mesosfera</text><text x="455" y="416">Estratosfera</text><text x="455" y="490">Troposfera</text></g>
+<g font-size="17" fill="#c5d8ec"><text x="455" y="149">700–10.000 km · transição para o espaço</text><text x="455" y="268">80–700 km · auroras e órbita da ISS</text><text x="455" y="370">50–80 km · desintegração de meteoros</text><text x="455" y="445">12–50 km · camada de ozônio</text><text x="455" y="519">0–12 km · nuvens, clima e vida</text></g>
+<text x="40" y="600" font-size="17" fill="#c5d8ec">Esquema sem escala. Limites aproximados, variáveis com a região e a atividade solar.</text>
+<text x="40" y="630" font-size="15" fill="#9db8d4">Explorando o Universo · ilustração baseada em NASA Science</text>
+</g></svg>
