@@ -1,4 +1,5 @@
 import {Telescope} from 'lucide-react';
+import ObservatoryMissions from './ObservatoryMissions';
 
 const observatories = [
   {
@@ -32,21 +33,15 @@ const observatories = [
     research: 'https://www.hq.eso.org/public/teles-instr/alma/',
     credit: 'Foto de ESO/B. Tafreshi (twanight.org)',
   },
-  {
-    name: 'Telescópio Espacial James Webb',
-    location: 'Ao redor do ponto L2 do sistema Sol–Terra · cerca de 1,5 milhão de km da Terra',
-    instrument: 'Infravermelho · espelho principal de 6,5 m',
-    description: 'O Webb investiga as primeiras galáxias e a formação de estrelas. Também separa a luz em diferentes comprimentos de onda para identificar gases nas atmosferas de exoplanetas.',
-    image: import.meta.env.BASE_URL + 'assets/observatories/webb.jpg', alt: 'Telescópio James Webb durante a preparação em solo antes do lançamento.',
-    source: 'https://www.nasa.gov/universe/nasas-james-webb-space-telescope-has-completed-testing/',
-    research: 'https://science.nasa.gov/mission/webb/',
-    credit: 'Foto de NASA/Chris Gunn',
-  },
+
 ];
 
 const observationTypes = [
   ['Luz visível', 'Revela detalhes de estrelas, nebulosas e galáxias. Ao separar a luz em um espectro, os pesquisadores podem identificar elementos químicos e medir velocidades.'],
+  ['Ultravioleta', 'Destaca estrelas jovens e quentes e o gás energizado ao seu redor. Ajuda a investigar a formação estelar e atmosferas de planetas.'],
   ['Infravermelho', 'Em certos comprimentos de onda, permite observar através de nuvens de poeira. Também revela a luz de galáxias distantes que se deslocou para o infravermelho com a expansão do Universo.'],
+  ['Raios X e raios gama', 'Revelam processos de alta energia em gás muito quente, restos de estrelas e regiões próximas de buracos negros. Diferentes instrumentos medem a imagem, o espectro e a polarização dessa radiação.'],
+  ['Micro-ondas', 'Permitem estudar a radiação cósmica de fundo, um registro do Universo jovem, e pequenas diferenças de temperatura e polarização nesse sinal.'],
   ['Ondas de rádio', 'Antenas captam sinais invisíveis aos nossos olhos. Nas faixas milimétrica e submilimétrica, esses sinais revelam gás frio e poeira em regiões de formação estelar.'],
 ];
 
@@ -70,10 +65,12 @@ export default function ObservatoryGuide() {
           </section>
         </div>
 
+        <ObservatoryMissions/>
+
         <section className="destination-panel" aria-labelledby="observatory-examples">
-          <h2 id="observatory-examples">Observatórios de referência</h2>
-          <p>Quatro exemplos de como a localização e os instrumentos definem o que se pode estudar.</p>
-          <ul className="galaxy-grid galaxy-gallery">
+          <h2 id="observatory-examples">Observatórios em solo</h2>
+          <p>Do Brasil ao deserto do Atacama, três exemplos de como o local e os instrumentos definem o que se pode estudar.</p>
+          <ul className="galaxy-grid galaxy-gallery observatory-ground-grid">
             {observatories.map(observatory => (
               <li className="galaxy-item" key={observatory.name}>
                 <a href={observatory.source}>
@@ -106,10 +103,17 @@ export default function ObservatoryGuide() {
           </dl>
         </section>
 
+        <section className="destination-panel" aria-labelledby="observatory-together">
+          <h2 id="observatory-together">Por que observar o mesmo objeto com vários instrumentos?</h2>
+          <p>Cada faixa revela uma parte da história. Uma região de formação estelar pode mostrar estrelas no visível, poeira no infravermelho e gás frio nas ondas milimétricas. Ao combinar imagens e espectros, os astrônomos investigam temperatura, composição, movimento e a relação entre esses materiais.</p>
+          <p>Uma imagem astronômica pode atribuir cores visíveis a sinais que nossos olhos não enxergam. Por isso, mapas de raios X ou infravermelho devem ser interpretados junto de suas legendas. As imagens dos instrumentos nesta página também distinguem fotografias de ilustrações.</p>
+        </section>
+
         <section className="destination-panel" aria-labelledby="observatory-sites">
           <h2 id="observatory-sites">Por que construir em montanhas, desertos ou no espaço?</h2>
           <p>Em terra, a distância das cidades reduz a poluição luminosa. No ALMA, o ar seco em grande altitude também ajuda porque o vapor d’água absorve parte das ondas que as antenas precisam captar. No espaço, o Webb observa no infravermelho sem essa interferência da atmosfera terrestre.</p>
         </section>
+        <p className="observatory-source">Conteúdo adaptado de <a href="https://science.nasa.gov/universe/observatories/">Observatories · NASA Science</a> e das páginas oficiais das missões. As agências responsáveis e os créditos das imagens estão indicados nos cartões.</p>
       </div>
     </section>
   );

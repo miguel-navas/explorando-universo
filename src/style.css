@@ -464,6 +464,80 @@
   padding: 12px;
 }
 
+.observatory-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin: 20px 0 12px;
+}
+
+.observatory-filters button {
+  padding: 10px 16px;
+  border: 1px solid #537491;
+  border-radius: 24px;
+  background: #0b1e33;
+  color: #eaf1fa;
+  cursor: pointer;
+}
+
+.observatory-filters button[aria-pressed="true"] {
+  border-color: #ffb13b;
+  background: #33220e;
+  color: #ffca79;
+}
+
+.observatory-filters button:hover,
+.observatory-filters button:focus-visible {
+  outline: 2px solid #ffb13b;
+  outline-offset: 3px;
+}
+
+.observatory-missions .observatory-mission-grid,
+.observatory-ground-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.observatory-mission-grid img { object-fit: contain; }
+.observatory-destination .destination-panel { scroll-margin-top: calc(var(--header-offset) + 16px); }
+
+.observatory-band {
+  display: inline-block;
+  margin-bottom: 9px;
+  color: #ffbf64;
+  font-size: 12px;
+}
+
+.observatory-group-title { margin: 22px 0 16px; }
+.observatory-missions p.observatory-metadata { font-size: 13px; color: #c3d9ed; }
+.observatory-missions p.observatory-caption,
+.observatory-missions p.observatory-update,
+.observatory-source { font-size: 12px; color: #a8c4df; line-height: 1.6; }
+.observatory-note { padding-top: 14px; }
+.observatory-source { margin-top: 22px; }
+.observatory-source a { color: inherit; text-underline-offset: 3px; }
+
+.observatory-download {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  width: fit-content;
+  color: #ffca79;
+  font-size: 12px;
+  text-underline-offset: 3px;
+  margin-top: 14px;
+}
+
+@media (max-width: 1100px) {
+  .observatory-missions .observatory-mission-grid,
+  .observatory-ground-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 720px) {
+  .observatory-missions .observatory-mission-grid,
+  .observatory-ground-grid { grid-template-columns: minmax(0, 1fr); }
+  .observatory-filters button { padding: 9px 12px; font-size: 12px; }
+}
+
 .galaxy-credit {
   display: inline-block;
   color: #a8c4df;
